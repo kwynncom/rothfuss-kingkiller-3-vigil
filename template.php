@@ -56,6 +56,15 @@
 	
     </table>
     
+    <div>
+	<ul>
+	    <li><a href='<?php echo kkc::realURL; ?>'>WikiP <i>Doors of Stone</i></a></li>
+	    <li><a href='https://kingkiller.fandom.com/wiki/The_Doors_of_Stone'>Fandom</a></li>
+	    <li><a href='https://www.patrickrothfuss.com/content/books.asp'>Rothfuss</a></li>
+	    
+	</ul>
+    </div>
+    
 </body>
 </html>
 

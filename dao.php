@@ -14,7 +14,7 @@ class dao_kkc extends dao_generic {
 
     function getTotQCnt() { return $this->qcoll->count();    }
     
-    function getRecentQ($lim = 30) { 
+    function getRecentQ($lim = 10) { 
 	$res = $this->qcoll->find([], ['sort' => ['tsfab' => -1], 'limit' => $lim])->toArray();   
 	if (!$res) return false;
 	if ($lim === 1) return $res[0];

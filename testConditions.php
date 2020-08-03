@@ -3,6 +3,6 @@
 function isTest() {
     if (isAWS()) return false;
     
-    return 0;
+    return 1;
     
 }

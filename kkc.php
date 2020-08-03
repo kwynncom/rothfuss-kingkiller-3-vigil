@@ -19,6 +19,12 @@ class kkc {
     
     private $theres = false;
     
+    private static function o($t) {
+	if (iscli()) echo $t . "\n";
+	
+	
+    }
+    
     public static function get() {    
 	$o = new self();
 	$r = $o->getDB();
@@ -51,7 +57,7 @@ class kkc {
     }
     
     private function final10() {
-	if (iscli()) echo('OK');
+	if (iscli()) self::o('OK');
 	
 	$dat['seq']   = $this->dbseq;
 	$dat['res']   = true;
@@ -85,7 +91,8 @@ class kkc {
 
 	if ($state > 0) $tres .= $nin->textContent;
 	
-	foreach($nin->childNodes as $cn) $this->p30($cn);
+	if (isset($nin->childNodes))
+	foreach  ($nin->childNodes as $cn) $this->p30($cn);
 	
 	$tres = str_replace($stt, '', $tres);
 	
