@@ -26,7 +26,9 @@ class kkc {
     }
     
     public function getDB() {
-	return $this->dao->getRecentAll();
+	$ret['ress'  ] = $this->dao->getRecentAll();
+	$ret['fcount'] = $this->dao->getTotQCnt();
+	return $ret;
     }
     
     private function __construct() {
@@ -190,11 +192,10 @@ class kkc {
 	
 	unset($b, $e, $url);
 	
-	if (!$real) {
-	    $tsdat = filemtime(self::tmpf);
-	    $rdat  = date('r', $tsdat);
-	}
-	
+	if (!$real) $tsdat = filemtime(self::tmpf);
+        else        $tsdat =      time();
+
+	$rdat  = date('r', $tsdat);	
 	
 	$vars = get_defined_vars();
 	

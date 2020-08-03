@@ -12,6 +12,8 @@ class dao_kkc extends dao_generic {
 	$this->rcoll = $this->client->selectCollection(self::db, 'result');
     }
 
+    function getTotQCnt() { return $this->qcoll->count();    }
+    
     function getRecentQ($lim = 30) { 
 	$res = $this->qcoll->find([], ['sort' => ['tsfab' => -1], 'limit' => $lim])->toArray();   
 	if (!$res) return false;
@@ -32,6 +34,7 @@ class dao_kkc extends dao_generic {
 	    if (!$datr) break;
 	    unset($datr['_id']);
 	    $dat = array_merge($dat, $datr);
+	    $dat['dsfab'] = date('D m/d H:i:s', $dat['tsfab']);
 	    $ret[] = $dat;
 	}
 	return $ret;
