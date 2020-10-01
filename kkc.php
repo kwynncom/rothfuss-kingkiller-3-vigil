@@ -8,13 +8,13 @@ require_once('quota.php');
 class kkc {
     
     const testCnt = 3;
-    const testv   = 1;
+    const testv   = 2;
 
     const realURL = 'https://en.wikipedia.org/wiki/Doors_of_Stone';    
     const tmpf    = '/tmp/kkc.html';
     
-    const t30l = 1833;
-    const t30hash = '9cd6dad8564d5660ecd59aa4c73bde0f8bde1c6ac8e724e4bc72284faf67f9db';
+    const t30l = 1871;
+    const t30hash = '2149c20696baa34d91061d21ac2392021dbf6ed6cd326aba777396cc62cab281';
 
     
     private $theres = false;
@@ -180,7 +180,7 @@ class kkc {
     private static function getActual() {
 	$real = !isTest();
 	
-	if ($real) $url = self::realURL;
+	if ($real  || !file_exists(self::tmpf)) $url = self::realURL;
 	else       $url = self::tmpf;
 	
 	$b  = microtime(1);
@@ -193,7 +193,7 @@ class kkc {
 	
 	kwas($len > 10000, 'size fail');
 	
-	if ($real) file_put_contents(self::tmpf, $ht);
+	file_put_contents(self::tmpf, $ht);
 	
 	$fetchTime = round($e - $b, 6);
 	
