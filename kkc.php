@@ -177,10 +177,18 @@ class kkc {
 	
     }
     
+    private static function canReadTemp() {
+	if (!file_exists(self::tmpf)) return false;
+	$r = file_get_contents(self::tmpf);
+	if (!$r) return false;
+	if (strlen($r) < 1000) return false;
+	return true;
+    }
+    
     private static function getActual() {
 	$real = !isTest();
 	
-	if ($real  || !file_exists(self::tmpf)) $url = self::realURL;
+	if ($real  || !self::canReadTemp()) $url = self::realURL;
 	else       $url = self::tmpf;
 	
 	$b  = microtime(1);

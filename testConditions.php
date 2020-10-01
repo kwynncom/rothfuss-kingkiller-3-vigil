@@ -1,10 +1,11 @@
 <?php
 
 function isTest() {
+
+    if (time() < strtotime('2020-09-20 21:50')) return 1;
+
     if (isAWS()) return false;
-    
-    if (time() < strtotime('2020-09-30 21:20')) return 1;
-    
+   
     return 1;
     
 }
